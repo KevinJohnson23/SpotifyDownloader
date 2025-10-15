@@ -1,4 +1,4 @@
-package com.johnson.kevin;
+package main.java.com.johnson.kevin;
 
 /**
  * Hello world!
