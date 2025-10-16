@@ -3,7 +3,7 @@ package com.johnson.kevin.model;
 import java.util.ArrayList;
 
 /**
- * Represents a Song attribute that can contain many values (artists, genres, etc.)
+ * Represents a Song attribute that can contain many values (artists, genres, etc.).
  */
 public class Multivalue<T> extends ArrayList<T> {
     /**
