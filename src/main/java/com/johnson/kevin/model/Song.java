@@ -1,7 +1,5 @@
 package com.johnson.kevin.model;
 
-import java.util.List;
-
 /**
  * Represents a Song with metadata.
  *
@@ -11,4 +9,8 @@ import java.util.List;
  * @param genres    list of genres
  * @param imageURI  URI pointing to cover art
  */
-public record Song(String songName, String albumName, List<String> artists, List<String> genres, String imageURI) { }
+public record Song(String songName, String albumName, Multivalue<String> artists, Multivalue<String> genres, String imageURI) {
+    public String toString() {
+        return songName + " - " + artists;
+    }
+}

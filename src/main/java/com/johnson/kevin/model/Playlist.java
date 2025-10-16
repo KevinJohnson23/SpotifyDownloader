@@ -1,26 +1,30 @@
 package com.johnson.kevin.model;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Represents a Playlist that may contain many Songs.
  */
-public class Playlist {
-    List<Song> songs;
+public class Playlist extends ArrayList<Song> {
+    String name;
 
     /**
-     * Initialise songs list.
+     * Initialise songs list and set specified name.
      */
-    public Playlist() {
-        this.songs = new ArrayList<>();
+    public Playlist(String name) {
+        super();
+        this.name = name;
     }
 
     /**
-     * Add Song to Playlist
-     * @param song Song to add
+     * @return "{position}. {song name} - {artist names}"
      */
-    public void add(Song song) {
-        this.songs.add(song);
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < this.size(); i++) {
+            builder.append(i).append(". ").append(this.get(i)).append("\n");
+        }
+        return builder.toString();
     }
 }
