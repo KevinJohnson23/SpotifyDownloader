@@ -1,6 +1,6 @@
 package com.johnson.kevin.service.spotify;
 
-import com.johnson.kevin.exceptions.spotify.SpotifyArtistRequestException;
+import com.johnson.kevin.service.spotify.exception.SpotifyArtistRequestException;
 import com.johnson.kevin.model.ArtistEntity;
 
 import java.util.HashMap;

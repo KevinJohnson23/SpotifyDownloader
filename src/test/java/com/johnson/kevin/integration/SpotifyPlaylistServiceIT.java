@@ -1,7 +1,7 @@
 package com.johnson.kevin.integration;
 
-import com.johnson.kevin.exceptions.spotify.SpotifyPlaylistUrlException;
-import com.johnson.kevin.exceptions.spotify.SpotifyPlaylistException;
+import com.johnson.kevin.service.spotify.exception.SpotifyPlaylistUrlException;
+import com.johnson.kevin.service.spotify.exception.SpotifyPlaylistException;
 import com.johnson.kevin.model.PlaylistEntity;
 import com.johnson.kevin.service.SpotifyPlaylistService;
 import org.junit.jupiter.api.Test;
@@ -23,6 +23,10 @@ public class SpotifyPlaylistServiceIT {
             playlistEntity.size()
         );
         assertEquals(
+            "test",
+            playlistEntity.getName()
+        );
+        assertEquals(
             "1. To Hell We Ride - lostprophets\n2. Rooftops - lostprophets\n3. Just Tonight - Jimmy Eat World",
             playlistEntity.toString()
         );
@@ -34,6 +38,10 @@ public class SpotifyPlaylistServiceIT {
             "6Vc9cDiVRKH013ycHKN9nr",
             playlistEntity.get(0).getAlbum().getId()
         );
+        assertEquals(
+            "https://i.scdn.co/image/ab67616d0000b273528c0fda8f7fc339ac33c9ff",
+            playlistEntity.get(0).getAlbum().getImageUrl()
+        );
     }
 
     @Test
@@ -44,6 +52,10 @@ public class SpotifyPlaylistServiceIT {
         assertEquals(
             0,
             playlistEntity.size()
+        );
+        assertEquals(
+            "test #2",
+            playlistEntity.getName()
         );
         assertEquals(
             "",

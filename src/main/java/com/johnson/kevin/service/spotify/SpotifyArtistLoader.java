@@ -1,7 +1,7 @@
 package com.johnson.kevin.service.spotify;
 
-import com.johnson.kevin.exceptions.spotify.SpotifyArtistRequestException;
-import com.johnson.kevin.exceptions.spotify.SpotifyAuthenticationException;
+import com.johnson.kevin.service.spotify.exception.SpotifyArtistRequestException;
+import com.johnson.kevin.service.spotify.exception.SpotifyAuthenticationException;
 import com.johnson.kevin.model.ArtistEntity;
 import com.johnson.kevin.service.spotify.converters.SpotifyArtistEntityConverter;
 import org.apache.hc.core5.http.ParseException;

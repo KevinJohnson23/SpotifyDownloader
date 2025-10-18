@@ -1,6 +1,6 @@
 package com.johnson.kevin.service.spotify.util;
 
-import com.johnson.kevin.exceptions.spotify.SpotifyPlaylistUrlException;
+import com.johnson.kevin.service.spotify.exception.SpotifyPlaylistUrlException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

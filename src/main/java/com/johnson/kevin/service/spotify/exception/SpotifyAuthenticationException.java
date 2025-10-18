@@ -1,4 +1,4 @@
-package com.johnson.kevin.exceptions.spotify;
+package com.johnson.kevin.service.spotify.exception;
 
 /**
  * Indicates access token could not be retrieved for provided Spotify client credentials

@@ -1,7 +1,7 @@
 package com.johnson.kevin.unit;
 
-import com.johnson.kevin.exceptions.spotify.SpotifyPlaylistUrlException;
-import com.johnson.kevin.exceptions.spotify.SpotifyPlaylistException;
+import com.johnson.kevin.service.spotify.exception.SpotifyPlaylistUrlException;
+import com.johnson.kevin.service.spotify.exception.SpotifyPlaylistException;
 import com.johnson.kevin.model.PlaylistEntity;
 
 import com.johnson.kevin.service.SpotifyPlaylistService;

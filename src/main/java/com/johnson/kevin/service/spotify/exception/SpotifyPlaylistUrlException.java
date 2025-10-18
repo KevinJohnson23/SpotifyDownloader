@@ -1,4 +1,4 @@
-package com.johnson.kevin.exceptions.spotify;
+package com.johnson.kevin.service.spotify.exception;
 
 /**
  * Indicates an incorrect Spotify playlist URL was given.

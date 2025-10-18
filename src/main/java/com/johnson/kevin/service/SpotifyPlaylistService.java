@@ -1,6 +1,5 @@
 package com.johnson.kevin.service;
 
-import com.johnson.kevin.exceptions.spotify.*;
 import com.johnson.kevin.model.ArtistEntity;
 import com.johnson.kevin.model.EntityMultivalue;
 import com.johnson.kevin.model.PlaylistEntity;
@@ -8,6 +7,7 @@ import com.johnson.kevin.model.SongEntity;
 import com.johnson.kevin.service.spotify.SpotifyFillArtist;
 import com.johnson.kevin.service.spotify.SpotifyPlaylistItemsLoader;
 import com.johnson.kevin.service.spotify.SpotifyPlaylistLoader;
+import com.johnson.kevin.service.spotify.exception.*;
 import com.johnson.kevin.service.spotify.util.SpotifyPlaylistUrlValidator;
 
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.johnson.kevin.service.spotify;
 
-import com.johnson.kevin.exceptions.spotify.SpotifyAuthenticationException;
+import com.johnson.kevin.service.spotify.exception.SpotifyAuthenticationException;
 import com.johnson.kevin.service.EnvService;
 import org.apache.hc.core5.http.ParseException;
 import se.michaelthelin.spotify.SpotifyApi;
