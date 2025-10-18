@@ -1,11 +1,13 @@
 package com.johnson.kevin.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Represents a Song attribute that can contain many values (artists, genres, etc.).
  */
-public class Multivalue<T> extends ArrayList<T> {
+public class EntityMultivalue<T> extends ArrayList<T> {
+    
     /**
      * @return "{value1}, {value2}" ... ", {valueN}"
      */
@@ -19,5 +21,16 @@ public class Multivalue<T> extends ArrayList<T> {
             }
         }
         return builder.toString();
+    }
+
+    /**
+     * Fill a new {@link EntityMultivalue} with elements from an array.
+     * @param array the array to fill in values from
+     * @return new {@link EntityMultivalue} instance with values filled in
+     */
+    public static <T> EntityMultivalue<T> fromArray(T[] array) {
+        EntityMultivalue<T> multivalue = new EntityMultivalue<>();
+        multivalue.addAll(Arrays.asList(array));
+        return multivalue;
     }
 }
