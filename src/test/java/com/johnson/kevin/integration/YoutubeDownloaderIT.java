@@ -4,7 +4,7 @@ import com.johnson.kevin.model.ArtistEntity;
 import com.johnson.kevin.model.EntityMultivalue;
 import com.johnson.kevin.model.PlaylistEntity;
 import com.johnson.kevin.model.SongEntity;
-import com.johnson.kevin.service.youtube.YouTubeDownloader;
+import com.johnson.kevin.service.YouTubeDownloadService;
 import com.johnson.kevin.service.youtube.exception.YouTubeDownloadException;
 import org.junit.jupiter.api.Test;
 
@@ -36,10 +36,10 @@ public class YoutubeDownloaderIT {
 
     /**
      * Helper to get number of files in output folder
-     * @throws YouTubeDownloadException
+     * @param path path to search
      */
-    private int getNumFiles() {
-        File outputFolder = new File(outputPath);
+    private int getNumFiles(String path) {
+        File outputFolder = new File(path);
         String[] entries = outputFolder.list();
         return entries != null ? entries.length : 0;
     }
@@ -48,31 +48,31 @@ public class YoutubeDownloaderIT {
     public void emptyPlaylistShouldDownloadNothing() throws YouTubeDownloadException {
         removeOutputFolder();
         PlaylistEntity playlist = new PlaylistEntity();
-        YouTubeDownloader.downloadPlaylist(playlist, outputPath);
-        assertEquals(getNumFiles(), 0);
+        YouTubeDownloadService.downloadPlaylist(playlist, outputPath);
+        assertEquals(getNumFiles(outputPath + "/" + playlist.getName()), 0);
     }
 
     @Test
     public void filledPlaylistShouldDownloadMany() throws YouTubeDownloadException {
         removeOutputFolder();
-        PlaylistEntity playlist = new PlaylistEntity();
+        PlaylistEntity playlist = new PlaylistEntity(null, "test_name", null);
 
         EntityMultivalue<ArtistEntity> artists1 = new EntityMultivalue<>();
         artists1.add(new ArtistEntity(null, "Soundgarden", null, null));
-        SongEntity song1 = new SongEntity(null, "Black Hole Sun", null, artists1, 321000);
+        SongEntity song1 = new SongEntity("1", "Black Hole Sun", null, artists1, 321000);
         playlist.add(song1);
 
         EntityMultivalue<ArtistEntity> artists2 = new EntityMultivalue<>();
         artists2.add(new ArtistEntity(null, "Nirvana", null, null));
-        SongEntity song2 = new SongEntity(null, "Negative Creep", null, artists2, 162000);
+        SongEntity song2 = new SongEntity("2", "Negative Creep", null, artists2, 162000);
         playlist.add(song2);
 
         EntityMultivalue<ArtistEntity> artists3 = new EntityMultivalue<>();
         artists3.add(new ArtistEntity(null, "Alice in Chains", null, null));
-        SongEntity song3 = new SongEntity(null, "Man in the Box", null, artists3, 272000);
+        SongEntity song3 = new SongEntity("3", "Man in the Box", null, artists3, 272000);
         playlist.add(song3);
 
-        YouTubeDownloader.downloadPlaylist(playlist, outputPath);
-        assertEquals(getNumFiles(), 3);
+        YouTubeDownloadService.downloadPlaylist(playlist, outputPath);
+        assertEquals(3, getNumFiles(outputPath + "/" + playlist.getName()));
     }
 }

@@ -3,7 +3,7 @@ package com.johnson.kevin;
 import com.johnson.kevin.model.PlaylistEntity;
 import com.johnson.kevin.service.SpotifyPlaylistService;
 import com.johnson.kevin.service.spotify.exception.SpotifyPlaylistException;
-import com.johnson.kevin.service.youtube.YouTubeDownloader;
+import com.johnson.kevin.service.YouTubeDownloadService;
 import com.johnson.kevin.service.youtube.exception.YouTubeDownloadException;
 
 import java.awt.Desktop;
@@ -23,11 +23,14 @@ public class Main {
      *              </ul>
      */
     public static void main(String[] args) {
-        String playlistUrl = args[0];
-        String path = args[1];
-        if (playlistUrl == null) {
-            System.out.println("Please provide a playlist URL.");
+        if (args.length < 1) {
+            System.out.println("Must provide playlist URL.");
             return;
+        }
+        String playlistUrl = args[0];
+        String path = "";
+        if (args.length > 1) {
+            path = args[1];
         }
         PlaylistEntity playlist;
         try {
@@ -38,16 +41,16 @@ public class Main {
             return;
         }
         try {
-            YouTubeDownloader.downloadPlaylist(playlist, path);
+            YouTubeDownloadService.downloadPlaylist(playlist, path);
         } catch (YouTubeDownloadException e) {
             System.out.println("Failed to download playlist from YouTube.");
             System.out.println(e.getMessage());
             return;
         }
         try {
-            Desktop.getDesktop().open(new File(path));
+            Desktop.getDesktop().open(new File(path + "/" + playlist.getName()));
         } catch (IOException e) {
-            System.out.println("Failed to open file explorer at path '" + path + "'.");
+            System.out.println("Failed to open file explorer at path '" + path + "/" + playlist.getName() + "'.");
             System.out.println(e.getMessage());
         }
     }

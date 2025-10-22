@@ -23,7 +23,9 @@ public class SpotifyPlaylistService {
      * @return ID of playlist on Spotify
      * @throws SpotifyPlaylistException if invalid URL given
      */
-    private static String getId(String url) throws SpotifyPlaylistException {
+    private static String getId(String url)
+        throws SpotifyPlaylistException
+    {
         try {
             return SpotifyPlaylistUrlValidator.getId(url);
         } catch (SpotifyPlaylistUrlException e) {
@@ -37,7 +39,9 @@ public class SpotifyPlaylistService {
      * @return new {@link PlaylistEntity} instance
      * @throws SpotifyPlaylistException if failed to load playlist
      */
-    private static PlaylistEntity loadPlaylistBase(String playlistId) throws SpotifyPlaylistException {
+    private static PlaylistEntity loadPlaylistBase(String playlistId)
+        throws SpotifyPlaylistException
+    {
         try {
             return SpotifyPlaylistLoader.loadPlaylist(playlistId);
         } catch (SpotifyPlaylistRequestException e) {
@@ -51,7 +55,9 @@ public class SpotifyPlaylistService {
      * @return list of {@link SongEntity} instances
      * @throws SpotifyPlaylistException if failed to load songs
      */
-    private static List<SongEntity> loadPlaylistSongs(String playlistId) throws SpotifyPlaylistException {
+    private static List<SongEntity> loadPlaylistSongs(String playlistId)
+        throws SpotifyPlaylistException
+    {
         try {
             return SpotifyPlaylistItemsLoader.loadPlaylistItems(playlistId);
         } catch (SpotifyPlaylistItemsRequestException e) {
@@ -64,7 +70,9 @@ public class SpotifyPlaylistService {
      * @param artists {@link EntityMultivalue} of artists
      * @throws SpotifyPlaylistException if failed to fill in missing attributes
      */
-    private static void fillEntityArtists(EntityMultivalue<ArtistEntity> artists) throws SpotifyPlaylistException {
+    private static void fillEntityArtists(EntityMultivalue<ArtistEntity> artists)
+        throws SpotifyPlaylistException
+    {
         for (ArtistEntity artist : artists) {
             try {
                 SpotifyFillArtist.fillArtist(artist);
@@ -79,7 +87,9 @@ public class SpotifyPlaylistService {
      * @param songs List of songs
      * @throws SpotifyPlaylistException if failed to fill in missing attributes
      */
-    private static void fillSongListArtists(List<SongEntity> songs) throws SpotifyPlaylistException {
+    private static void fillSongListArtists(List<SongEntity> songs)
+        throws SpotifyPlaylistException
+    {
         for (SongEntity song : songs) {
             fillEntityArtists(song.getArtists());
             fillEntityArtists(song.getAlbum().getArtists());
